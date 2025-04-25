@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mentor AI
 
-## Getting Started
+Mentor AI is an innovative, multilingual, interactive AI career mentor platform designed to offer tailored learning paths, real-time coaching, mock interviews, and more. It provides users with personalized career guidance based on their aspirations, skills, and goals.
 
-First, run the development server:
+Built using Next.js, TypeScript, Express.js, MongoDB, and integrated with OpenAI for AI-driven guidance, Mentor AI aims to simplify career growth by offering personalized support, whether you're just starting your career or looking to take the next step.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tailored Learning Paths: Personalized learning paths based on your career goals, skill level, and mentor preferences.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Real-time Coaching: Interact with AI for advice and feedback on career growth and decision-making.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Mock Interviews: Practice interviews and get feedback to improve your performance.
 
-## Learn More
+Mentor Matching: Choose your mentor based on career preferences and goals.
 
-To learn more about Next.js, take a look at the following resources:
+Progress Tracking: Track your career development and learning journey.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Frontend: Next.js, TypeScript, React
 
-## Deploy on Vercel
+Backend: Nest.js, Node.js, TypeScript
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Database: PostgreSQL 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+AI Integration: OpenAI GPT-4 for interactive coaching and guidance
+
+Authentication: JWT-based authentication for secure user access
+
+UI Components: ShadCN UI for responsive and modern design
+
+Containerization: Docker for containerization
