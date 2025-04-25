@@ -1,26 +1,57 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* globals.css */
+
+.btn-primary {
+  @apply bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.hero-heading {
+  @apply text-4xl md:text-5xl font-extrabold text-black leading-tight;
+}
+
+.hero-paragraph {
+  @apply text-gray-800 text-lg md:text-xl;
+}
+
+.gradient {
+  @apply bg-gradient-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent;
+}
+
+.bg {
+  @apply flex items-center justify-center bg-indigo-50 px-4;
+}
+
+.bg-gradient {
+  @apply bg-gradient-to-r from-indigo-600 to-blue-500;
+}
+
+.card {
+  @apply p-8 max-w-md w-full bg-white rounded-xl shadow-md;
+}
+
+@layer utilities {
+  @keyframes scroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .animate-scroll {
+    animation: scroll 20s linear infinite;
+  }
+
+  .group-hover\:paused {
+    animation-play-state: paused;
+  }
 }
