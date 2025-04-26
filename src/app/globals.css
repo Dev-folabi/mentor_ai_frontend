@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@tailwind utilities;
 
 img {
   max-width: 100%;
