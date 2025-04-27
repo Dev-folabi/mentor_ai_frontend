@@ -1,10 +1,17 @@
 import Sidebar from "@/components/dashboard/sideBar";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex">
+    <div className="flex h-screen">
+      {/* Sidebar */}
       <Sidebar />
-      <main className="flex-1 p-6 md:p-8 bg-indigo-50 h-screen">{children}</main>
+
+      {/* Main */}
+      <main className="flex-1 p-4 sm:p-6 md:p-8 bg-indigo-50 overflow-y-auto  transition-all">
+        {children}
+      </main>
     </div>
   );
-}
+};
+
+export default Layout;

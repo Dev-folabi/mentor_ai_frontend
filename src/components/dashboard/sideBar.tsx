@@ -30,10 +30,14 @@ const Sidebar = () => {
   ];
 
   return (
-    <>
+    <div className="">
       {/* Mobile header */}
-      <div className="md:hidden  justify-between bg-white border-b shadow-sm">
-        <button onClick={toggleMobile} className="text-2xl text-indigo-500 m-4">
+      <div className="md:hidden justify-between bg-white border-b shadow-sm">
+        <button
+          onClick={toggleMobile}
+          aria-label="Toggle Sidebar"
+          className="text-2xl text-indigo-500 m-4"
+        >
           <SidebarIcon />
         </button>
       </div>
@@ -52,7 +56,7 @@ const Sidebar = () => {
       {/* Sidebar */}
       <aside
         className={clsx(
-          "fixed z-50 h-full bg-white border-r border-gray-200 transition-all duration-300 md:static md:translate-x-0",
+          "fixed z-50 top-0 h-screen bg-white border-r border-gray-200 transition-all duration-300 ease-in-out md:static md:translate-x-0",
           collapsed ? "md:w-[60px]" : "md:w-[220px]",
           mobileOpen
             ? "translate-x-0 w-[220px]"
@@ -67,43 +71,46 @@ const Sidebar = () => {
           )}
           <button
             onClick={mobileOpen ? toggleMobile : toggleSidebar}
+            aria-label={mobileOpen ? "Close Sidebar" : "Open Sidebar"}
             className="text-xl ml-auto text-indigo-500"
           >
             <SidebarIcon />
           </button>
         </div>
 
-        <nav className="flex flex-col gap-2 p-2 mt-10">
-          {navItems.map(({ label, icon, href }) => {
-            const isActive = pathname === href;
-            return (
-              <Link
-                key={label}
-                href={href}
-                onClick={() => mobileOpen && toggleMobile()}
-                className={clsx(
-                  "flex items-center gap-4 p-2 rounded-md transition-colors",
-                  "hover:bg-gray-100",
-                  isActive
-                    ? "bg-indigo-100 text-indigo-600 font-medium"
-                    : "text-gray-700",
-                  collapsed && "justify-center"
-                )}
-              >
-                <span className="text-xl">{icon}</span>
-                {!collapsed && (
-                  <span
-                    className={clsx("text-sm", collapsed && "hidden md:inline")}
-                  >
-                    {label}
-                  </span>
-                )}
-              </Link>
-            );
-          })}
-        </nav>
+        <div className="flex-1 overflow-y-auto">
+          <nav className="flex flex-col gap-2 p-2 mt-10">
+            {navItems.map(({ label, icon, href }) => {
+              const isActive = pathname === href;
+              return (
+                <Link
+                  key={label}
+                  href={href}
+                  onClick={() => mobileOpen && toggleMobile()}
+                  className={clsx(
+                    "flex items-center gap-4 p-2 rounded-md transition-colors",
+                    "hover:bg-gray-100",
+                    isActive
+                      ? "bg-indigo-100 text-indigo-600 font-medium"
+                      : "text-gray-700",
+                    collapsed && "justify-center"
+                  )}
+                >
+                  <span className="text-xl">{icon}</span>
+                  {!collapsed && (
+                    <span
+                      className={clsx("text-sm", collapsed && "hidden md:inline")}
+                    >
+                      {label}
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
       </aside>
-    </>
+    </div>
   );
 };
 
