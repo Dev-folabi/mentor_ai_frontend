@@ -72,7 +72,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
             alt="avatar"
             width={40}
             height={40}
-            className="rounded-full"
+            className="rounded-full border-2 border-indigo-200 p-1"
           />
         </div>
       )}

@@ -1,30 +1,6 @@
 import { learning } from "@/constant/learning";
 import { HiLockClosed } from "react-icons/hi2";
 
-// const learning = [
-//   {
-//     id: "1",
-//     title: "HTML & CSS Fundamentalls",
-//     status: "completed",
-//     achievedBadge: () => null,
-//     achievedTitle: "Code Master",
-//   },
-//   {
-//     id: "2",
-//     title: "JavaScript Basics",
-//     status: "progress",
-//     achievedBadge: () => null,
-//     achievedTitle: "Quick Learner",
-//   },
-//   {
-//     id: "3",
-//     title: "React JS Framework",
-//     status: "locked",
-//     achievedBadge: () => null,
-//     achievedTitle: "CSS Expert",
-//   },
-// ];
-
 const RecentAchievements = () => {
   return (
     <div className="flex flex-col p-4 sm:p-6 md:p-8 w-full bg-white mt-6 rounded-lg shadow-md gap-6">

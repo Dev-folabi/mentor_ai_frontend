@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from "react-icons/fa";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import ROUTES from "@/constant/routes";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,10 +54,10 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Buttons */}
         <div className="hidden md:flex md:items-center gap-4">
-          <Link href="/auth/login" className="text-indigo-700">
+          <Link href={ROUTES.LOGIN} className="text-indigo-700">
             Login
           </Link>
-          <Link href="/auth/auth/register">
+          <Link href={ROUTES.REGISTER}>
             <Button className="bg-gradient-to-r from-indigo-600 to-blue-500 text-white px-6 py-2 rounded-full shadow-md hover:scale-105 transition-transform">
               Get Started
             </Button>
