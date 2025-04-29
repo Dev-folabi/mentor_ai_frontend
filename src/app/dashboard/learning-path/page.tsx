@@ -1,26 +1,18 @@
 import DashboardHeader from "@/components/dashboard/dashboardHeader";
-import { learningPath } from "@/constant/learning";
+import { careerPath } from "@/constant/learning";
 import React from "react";
 
-
-
 const LearningPath = () => {
-  const {learningTrack, beginner, intermediate, advance} = learningPath;
+  const { name } = careerPath;
   return (
     <div className="flex flex-col">
-      <DashboardHeader
-        title="My Learning Path"
-        subtitle={learningTrack}
-      />
+      <DashboardHeader title="My Learning Path" subtitle={name} />
 
-{/* Learning Track */}
-<div className="flex">
-  {/* Icon & Text */}
-<div className="flex flex-col">
-{beginner.icon }
-</div>
-</div>
-
+      {/* Learning Track */}
+      <div className="flex">
+        {/* Icon & Text */}
+        <div className="flex flex-col">{}</div>
+      </div>
     </div>
   );
 };
