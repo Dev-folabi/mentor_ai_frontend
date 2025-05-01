@@ -101,7 +101,7 @@ export const careerPath = {
       description: "Module about html & css fundamentals",
       level: "BEGINNER",
       durationWeeks: 3,
-      status: "NOT_STARTED",
+      status: "COMPLETED",
       objective: [
         "Understand HTML document structure and semantic elements",
         "Master CSS selectors, properties, and layout techniques",
@@ -117,7 +117,7 @@ export const careerPath = {
           id: "content-1-1",
           title: "HTML & CSS Fundamentals Part 1",
           number: 1,
-          status: "NOT_STARTED",
+          status: "COMPLETED",
           contentType: "video",
           contentLink: "https://www.youtube.com/watch?v=qz0aGYrrlhU",
           contentAssessment: [
@@ -157,7 +157,7 @@ export const careerPath = {
           id: "content-1-2",
           title: "HTML & CSS Fundamentals Part 2",
           number: 2,
-          status: "NOT_STARTED",
+          status: "COMPLETED",
           contentType: "article",
           contentLink: "https://www.w3schools.com/html/html_css.asp",
           contentAssessment: [
@@ -198,7 +198,7 @@ export const careerPath = {
           id: "content-1-3",
           title: "HTML & CSS Fundamentals Part 3",
           number: 3,
-          status: "NOT_STARTED",
+          status: "COMPLETED",
           contentType: "video",
           contentLink: "https://www.youtube.com/watch?v=yfoY53QXEnI",
           contentAssessment: [
@@ -409,7 +409,154 @@ export const careerPath = {
       description: "Module about responsive design & flexbox",
       level: "BEGINNER",
       durationWeeks: 3,
-      status: "NOT_STARTED",
+      status: "IN_PROGRESS",
+      objective: [
+        "Master responsive design principles and techniques",
+        "Learn Flexbox layout system for building flexible layouts",
+        "Understand mobile-first design approach",
+        "Practice creating responsive navigation patterns",
+      ],
+      acheivementBadgeIcon: "FaCss3Alt",
+      mentorComment:
+        "Understand how layout systems like flexbox and grid work.",
+      xp: 60,
+      content: [
+        {
+          id: "content-3-1",
+          title: "Responsive Design & Flexbox Part 1",
+          number: 1,
+          status: "COMPLETED",
+          contentType: "video",
+          contentLink: "https://www.youtube.com/watch?v=fYq5PXgSsbE",
+          contentAssessment: [
+            {
+              question: "What is the main purpose of Flexbox in CSS?",
+              options: [
+                "To handle server-side operations",
+                "To create one-dimensional layouts and align items within a container",
+                "To store data in the browser",
+              ],
+              answer:
+                "To create one-dimensional layouts and align items within a container",
+            },
+            {
+              question:
+                "Which property is used to define the direction of flex items?",
+              options: ["flex-direction", "flex-flow", "flex-wrap"],
+              answer: "flex-direction",
+            },
+            {
+              question: "What is the default value of flex-direction?",
+              options: ["column", "row", "row-reverse"],
+              answer: "row",
+            },
+          ],
+        },
+        {
+          id: "content-3-2",
+          title: "Responsive Design & Flexbox Part 2",
+          number: 2,
+          status: "NOT_STARTED",
+          contentType: "article",
+          contentLink:
+            "https://www.freecodecamp.org/news/learn-flexbox-and-responsive-design/",
+          contentAssessment: [
+            {
+              question: "What are the key principles of responsive design?",
+              options: [
+                "Using fixed pixel widths and absolute positioning",
+                "Mobile-first approach, fluid grids, and flexible media",
+                "Only using desktop layouts and scaling them down",
+              ],
+              answer: "Mobile-first approach, fluid grids, and flexible media",
+            },
+            {
+              question:
+                "What is the purpose of media queries breakpoints in responsive design?",
+              options: [
+                "To define specific points where layout changes should occur based on screen size",
+                "To break the webpage into smaller sections",
+                "To stop the website from loading on mobile devices",
+              ],
+              answer:
+                "To define specific points where layout changes should occur based on screen size",
+            },
+            {
+              question:
+                "What is the mobile-first approach in responsive design?",
+              options: [
+                "Designing only for mobile devices",
+                "Starting with desktop design and scaling down",
+                "Designing for mobile devices first, then progressively enhancing for larger screens",
+              ],
+              answer:
+                "Designing for mobile devices first, then progressively enhancing for larger screens",
+            },
+          ],
+        },
+        {
+          id: "content-3-3",
+          title: "Responsive Design & Flexbox Part 3",
+          number: 3,
+          status: "NOT_STARTED",
+          contentType: "video",
+          contentLink: "https://www.youtube.com/watch?v=K74l26pE4YA",
+          contentAssessment: [
+            {
+              question:
+                "What are the main advantages of using Flexbox for layout in responsive design?",
+              options: [
+                "Easy alignment and distribution of space between items",
+                "Better support for older browsers than CSS Grid",
+                "More suitable for complex grid-based layouts",
+              ],
+              answer: "Easy alignment and distribution of space between items",
+            },
+            {
+              question:
+                "What is the role of media queries in responsive design?",
+              options: [
+                "To change styles based on device characteristics like screen size",
+                "To handle media file uploads",
+                "To play audio and video content",
+              ],
+              answer:
+                "To change styles based on device characteristics like screen size",
+            },
+            {
+              question:
+                "What is the purpose of the flex-grow property in Flexbox?",
+              options: [
+                "To make elements shrink when space is limited",
+                "To specify how much an element can grow relative to other flex items",
+                "To set the initial size of flex items",
+              ],
+              answer:
+                "To specify how much an element can grow relative to other flex items",
+            },
+          ],
+        },
+      ],
+      challenges: [
+        {
+          id: "challenge-mod-3",
+          title: "Challenge for Responsive Design & Flexbox",
+          description: "Complete the assigned task and submit your code.",
+          contentUrl: "",
+          submissionType: "code",
+          createdAt: "2025-01-10T00:00:00",
+          updatedAt: "2025-01-15T00:00:00",
+        },
+      ],
+    },
+    {
+      id: "mod-4",
+      number: 4,
+      title: "Responsive Design & Grid",
+      description: "Module about responsive design & flexbox",
+      level: "BEGINNER",
+      durationWeeks: 3,
+      status: "LOCKED",
       objective: [
         "Master responsive design principles and techniques",
         "Learn Flexbox layout system for building flexible layouts",
