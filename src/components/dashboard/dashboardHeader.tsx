@@ -45,7 +45,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
         ) : (
           <div>
             <div className="flex items-center gap-4 mb-2">
-              <p className="text-2xl font-bold">{title}</p>
+              <p className="text-2xl font-medium md:font-bold">{title}</p>
               {badgeText && (
                 <Badge className="hidden md:block bg-green-200 text-green-800 px-4 py-1 rounded-full">
                   {badgeText}

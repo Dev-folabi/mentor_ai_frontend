@@ -93,6 +93,7 @@ export const careerPath = {
   duration: "12 Weeks",
 
   modules: [
+    // Beginner Level Modules
     {
       id: "mod-1",
       number: 1,
@@ -548,12 +549,15 @@ export const careerPath = {
         },
       ],
     },
+
+    // Intermediate Level Modules
+
     {
       id: "mod-4",
       number: 4,
       title: "React Essentials",
       description: "Module about react essentials",
-      level: "BEGINNER",
+      level: "INTERMEDIATE",
       durationWeeks: 3,
       status: "NOT_STARTED",
       objective: [
@@ -701,6 +705,190 @@ export const careerPath = {
           submissionType: "code",
           createdAt: "2025-01-10T00:00:00",
           updatedAt: "2025-01-15T00:00:00",
+        },
+      ],
+    },
+    {
+      id: "mod-5",
+      number: 5,
+      title: "Advanced JavaScript Concepts",
+      description: "Module about advanced JavaScript concepts",
+      level: "INTERMEDIATE",
+      durationWeeks: 3,
+      status: "NOT_STARTED",
+      objective: [
+        "Master closures, prototypes, and inheritance",
+        "Understand asynchronous programming with Promises and async/await",
+        "Learn advanced ES6+ features and patterns",
+        "Practice error handling and debugging techniques",
+      ],
+      acheivementBadgeIcon: "FaJs",
+      mentorComment:
+        "Focus on understanding closures and asynchronous patterns.",
+      xp: 80,
+      content: [
+        {
+          id: "content-5-1",
+          title: "Advanced JavaScript Part 1",
+          number: 1,
+          status: "NOT_STARTED",
+          contentType: "video",
+          contentLink: "https://www.youtube.com/watch?v=v2tJ3nzXh8I",
+          contentAssessment: [
+            {
+              question: "What is a closure in JavaScript?",
+              options: [
+                "A way to close browser windows",
+                "A function that has access to variables in its outer scope",
+                "A method to end JavaScript execution",
+              ],
+              answer:
+                "A function that has access to variables in its outer scope",
+            },
+            {
+              question: "What is the prototype chain in JavaScript?",
+              options: [
+                "A series of linked prototype objects used for inheritance",
+                "A way to chain multiple function calls",
+                "A special type of array",
+              ],
+              answer:
+                "A series of linked prototype objects used for inheritance",
+            },
+          ],
+        },
+      ],
+      challenges: [
+        {
+          id: "challenge-mod-5",
+          title: "Advanced JavaScript Challenge",
+          description: "Build a complex application using advanced JS concepts",
+          contentUrl: "",
+          submissionType: "code",
+          createdAt: "2025-02-10T00:00:00",
+          updatedAt: "2025-02-15T00:00:00",
+        },
+      ],
+    },
+
+    // Advanced Level Modules
+    {
+      id: "mod-6",
+      number: 6,
+      title: "State Management with Redux",
+      description: "Module about Redux state management",
+      level: "ADVANCED",
+      durationWeeks: 3,
+      status: "NOT_STARTED",
+      objective: [
+        "Understand Redux architecture and principles",
+        "Master actions, reducers, and the store",
+        "Learn middleware and async actions",
+        "Practice implementing Redux in React applications",
+      ],
+      acheivementBadgeIcon: "FaRedux",
+      mentorComment: "Focus on understanding the Redux flow and middleware.",
+      xp: 80,
+      content: [
+        {
+          id: "content-6-1",
+          title: "Redux Fundamentals",
+          number: 1,
+          status: "NOT_STARTED",
+          contentType: "video",
+          contentLink: "https://www.youtube.com/watch?v=_shA5Xwe8_4",
+          contentAssessment: [
+            {
+              question: "What is the main purpose of Redux?",
+              options: [
+                "To handle routing in React applications",
+                "To manage global state in a predictable way",
+                "To style React components",
+              ],
+              answer: "To manage global state in a predictable way",
+            },
+            {
+              question: "What is a Redux reducer?",
+              options: [
+                "A pure function that updates state based on actions",
+                "A component that reduces application size",
+                "A tool for compressing data",
+              ],
+              answer: "A pure function that updates state based on actions",
+            },
+          ],
+        },
+      ],
+      challenges: [
+        {
+          id: "challenge-mod-6",
+          title: "Redux Implementation Challenge",
+          description: "Implement Redux in a React application",
+          contentUrl: "",
+          submissionType: "code",
+          createdAt: "2025-03-10T00:00:00",
+          updatedAt: "2025-03-15T00:00:00",
+        },
+      ],
+    },
+    {
+      id: "mod-7",
+      number: 7,
+      title: "Testing React Applications",
+      description: "Module about testing React applications",
+      level: "ADVANCED",
+      durationWeeks: 3,
+      status: "NOT_STARTED",
+      objective: [
+        "Learn testing principles and methodologies",
+        "Master Jest and React Testing Library",
+        "Understand unit, integration, and end-to-end testing",
+        "Practice writing comprehensive test suites",
+      ],
+      acheivementBadgeIcon: "FaVial",
+      mentorComment:
+        "Focus on writing meaningful tests that improve code quality.",
+      xp: 80,
+      content: [
+        {
+          id: "content-7-1",
+          title: "React Testing Fundamentals",
+          number: 1,
+          status: "NOT_STARTED",
+          contentType: "video",
+          contentLink: "https://www.youtube.com/watch?v=GLSSRtnNY0g",
+          contentAssessment: [
+            {
+              question: "What is the purpose of React Testing Library?",
+              options: [
+                "To test React components in a way that resembles user behavior",
+                "To improve React performance",
+                "To style React components",
+              ],
+              answer:
+                "To test React components in a way that resembles user behavior",
+            },
+            {
+              question: "What is a unit test in React?",
+              options: [
+                "Testing individual components in isolation",
+                "Testing the entire application",
+                "Testing only CSS styles",
+              ],
+              answer: "Testing individual components in isolation",
+            },
+          ],
+        },
+      ],
+      challenges: [
+        {
+          id: "challenge-mod-7",
+          title: "Testing Challenge",
+          description: "Write comprehensive tests for a React application",
+          contentUrl: "",
+          submissionType: "code",
+          createdAt: "2025-04-10T00:00:00",
+          updatedAt: "2025-04-15T00:00:00",
         },
       ],
     },
