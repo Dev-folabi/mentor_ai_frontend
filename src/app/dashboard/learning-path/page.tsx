@@ -4,8 +4,17 @@ import DashboardHeader from "@/components/dashboard/dashboardHeader";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { careerPath } from "@/constant/learning";
+import { Circle } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
-import { FaMountain, FaSeedling } from "react-icons/fa";
+import {
+  FaBook,
+  FaCheckCircle,
+  FaFlagCheckered,
+  FaMountain,
+  FaSeedling,
+  FaTrophy,
+} from "react-icons/fa";
 import { HiLockClosed } from "react-icons/hi2";
 import { PiGitBranch } from "react-icons/pi";
 
@@ -56,28 +65,9 @@ const LearningPath = () => {
     return total === 0 ? 0 : Math.round((completed / total) * 100);
   };
 
-  const handleModuleStart = async (moduleId: string) => {
-    try {
-      // Find the module to update
-      const moduleToUpdate = modules.find((module) => module.id === moduleId);
+  const router = useRouter();
 
-      if (moduleToUpdate) {
-        // Update the module status to in progress
-        moduleToUpdate.status = Status.IN_PROGRESS;
-
-        // Initialize the first content item if it exists
-        if (moduleToUpdate.content && moduleToUpdate.content.length > 0) {
-          moduleToUpdate.content[0].status = Status.IN_PROGRESS;
-        }
-
-        // Force a re-render
-        setSelectedLevel(moduleToUpdate.level as Level);
-      }
-    } catch (error) {
-      console.error("Error starting module:", error);
-    }
-  };
-
+  // Set the initial selected level
   useEffect(() => {
     if (!modules?.length) return;
 
@@ -137,12 +127,12 @@ const LearningPath = () => {
 
               {/* Render Progress Line (not after the last level) */}
               {index < levels.length - 1 && hasLevel(levels[index + 1]) && (
-                <div className="w-full sm:w-[80px] flex items-center justify-center sm:mx-4">
+                <div className="flex-1 flex items-center justify-center sm:mx-4 w-full">
                   <Progress
                     value={getProgress(level)}
                     bg="bg-gray-300"
                     progressColour="bg-indigo-400"
-                    className="h-1 w-[100px] md:w-[120] sm:mt-0"
+                    className="h-1 w-full"
                   />
                 </div>
               )}
@@ -152,52 +142,149 @@ const LearningPath = () => {
       </div>
 
       {/* Modules Container */}
-      <div className="container flex flex-col bg-white rounded-md mt-2 p-4">
+      <div className="container flex flex-col bg-white rounded-md mt-4 p-4">
         {modules.map(
           (module, index) =>
-            module.level === selectedLevel && (
-              <div className="flex flex-row justify-between mt-2" key={index}>
-                <div>
-                  <h5 className="text-xl font-semibold">{module.title}</h5>
-                  <p className="text-sm text-gray-500">
-                    {`${module.number} of ${
-                      modules.filter((m) => m.level === selectedLevel).length
-                    } - ${selectedLevel} Stage`}
-                  </p>
-                </div>
-                <div>
-                  <button
-                    disabled={module.status !== Status.NOT_STARTED}
-                    onClick={() =>
-                      module.status === Status.NOT_STARTED &&
-                      handleModuleStart(module.id)
-                    }
-                    className={`cursor-${
-                      module.status === Status.NOT_STARTED
-                        ? "pointer"
-                        : "not-allowed"
-                    }`}
-                  >
-                    <Badge
-                      className={`px-4 py-2 rounded-full ${
-                        module.status === Status.COMPLETED
-                          ? "bg-green-200 text-green-600"
-                          : module.status === Status.LOCKED
-                          ? "bg-gray-200 text-gray-500"
-                          : "bg-indigo-200 text-indigo-600"
+            module.level === selectedLevel &&
+            (module.status === Status.IN_PROGRESS ||
+              module.status === Status.NOT_STARTED) && (
+              <div key={index}>
+                {/* Title and badge */}
+                <div className="flex flex-row justify-between mt-2">
+                  {/* Title / Subtitle */}
+                  <div>
+                    <h5 className="text-xl font-semibold">{module.title}</h5>
+                    <p className="text-sm text-gray-500">
+                      {`${module.number} of ${
+                        modules.filter((m) => m.level === selectedLevel).length
+                      } - ${selectedLevel} Stage`}
+                    </p>
+                  </div>
+                  {/* Badge */}
+                  <div>
+                    <button
+                      disabled={module.status !== Status.NOT_STARTED}
+                      onClick={() => router.push(`/learning-path/${module.id}`)}
+                      className={`cursor-${
+                        module.status === Status.NOT_STARTED
+                          ? "pointer"
+                          : "not-allowed"
                       }`}
                     >
-                      {module.status === Status.NOT_STARTED ? (
-                        "Start"
-                      ) : module.status === Status.IN_PROGRESS ? (
-                        `${getModuleProgress(module)}% Complete`
-                      ) : module.status === Status.COMPLETED ? (
-                        `${getModuleProgress(module)}% Completed`
-                      ) : (
-                        <HiLockClosed className="w-6 h-6" />
-                      )}
-                    </Badge>
-                  </button>
+                      <Badge
+                        className={`px-4 py-2 rounded-full ${
+                          module.status === Status.COMPLETED
+                            ? "bg-green-200 text-green-500"
+                            : module.status === Status.LOCKED
+                            ? "bg-gray-200 text-gray-500"
+                            : module.status === Status.IN_PROGRESS
+                            ? "bg-indigo-200 text-indigo-500"
+                            : module.status === Status.NOT_STARTED
+                            ? "bg-blue-200 text-blue-500"
+                            : "bg-gray-200 text-gray-500"
+                        }`}
+                      >
+                        {module.status === Status.NOT_STARTED ? (
+                          "Start"
+                        ) : module.status === Status.IN_PROGRESS ? (
+                          `${getModuleProgress(module)}% Complete`
+                        ) : module.status === Status.COMPLETED ? (
+                          `${getModuleProgress(module)}% Completed`
+                        ) : (
+                          <HiLockClosed className="w-6 h-6" />
+                        )}
+                      </Badge>
+                    </button>
+                  </div>
+                </div>
+                {/* Cards */}
+                <div className="grid grid-rows md:grid-cols-3 p-3 gap-4">
+                  {/* Learn */}
+                  <div className="flex flex-col p-3 border border-gray-400 rounded-sm">
+                    <div className="flex items-center gap-2 mb-1">
+                      <FaBook className="text-indigo-500 w-3 h3" />
+                      <p className="font-semibold"> Learn </p>
+                    </div>
+                    {module.content.map((content, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-row items-center gap-2"
+                      >
+                        {content.status === Status.COMPLETED ? (
+                          <FaCheckCircle className="text-green-500  w-4 h-4" />
+                        ) : (
+                          <Circle className="text-gray-500 w-4 h-4" />
+                        )}
+                        <p className="text-sm font-sm mt-2">{content.title}</p>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Checkpoint */}
+                  <div className="flex flex-col p-3 border border-gray-400 rounded-sm">
+                    <div className="flex items-center gap-2 mb-1">
+                      <FaFlagCheckered className="text-indigo-500 w-3 h3" />
+                      <p className="font-semibold"> Checkpoint </p>
+                    </div>
+                    {module.content.map((content, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-row items-center gap-2"
+                      >
+                        {content.status === Status.COMPLETED ? (
+                          <FaCheckCircle className="text-green-500  w-4 h-4" />
+                        ) : (
+                          <Circle className="text-gray-500 w-4 h-4" />
+                        )}
+                        <p className="text-sm font-sm mt-2">{content.title}</p>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Challenge */}
+                  <div className="flex flex-col p-3 border border-gray-400 rounded-sm">
+                    <div className="flex items-center gap-2 mb-1">
+                      <FaTrophy className="text-indigo-500 w-3 h3" />
+                      <p className="font-semibold"> Challenge </p>
+                    </div>
+                    {module.challenges.map((challenge, index) => (
+                      <div key={index} className="flex flex-col gap-2">
+                        <div className="flex flex-row items-center gap-2">
+                          {challenge.hasSubmit ? (
+                            <FaCheckCircle className="text-green-500  w-4 h-4 mt-2" />
+                          ) : (
+                            <Circle className="text-gray-500 w-4 h-4 mt-2" />
+                          )}
+                          <p className="text-sm font-sm mt-2">
+                            {challenge.title}
+                          </p>
+                        </div>
+
+                        <div>
+                          <button
+                            disabled={
+                              challenge.hasSubmit ||
+                              module.status !== Status.COMPLETED
+                            }
+                            onClick={() => {
+                              // Handle challenge submission
+                              router.push(`/challenge/${challenge.id}`);
+
+                              console.log(
+                                `Starting challenge: ${challenge.title}`
+                              );
+                            }}
+                            className={`${
+                              challenge.hasSubmit ||
+                              module.status !== Status.COMPLETED
+                                ? "cursor-not-allowed"
+                                : "cursor-pointer"
+                            } bg-gradient hover:bg-indigo-700 px-3 py-1 text-xs text-white rounded-md w-full transition-colors duration-200 mt-2`}
+                          >
+                            Start Assessment
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             )
