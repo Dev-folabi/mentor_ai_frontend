@@ -24,7 +24,7 @@ const Sidebar = () => {
       icon: <Telescope />,
       href: ROUTES.LEARNINGPATH,
     },
-    { label: "Challenges", icon: <Trophy />, href: ROUTES.CHALLENGE },
+    { label: "Challenges", icon: <Trophy />, href: ROUTES.paths.CHALLENGES },
     { label: "Mentor Chat", icon: <HiChat />, href: ROUTES.CHAT },
     { label: "Settings", icon: <Settings2 />, href: ROUTES.SETTING },
   ];
@@ -80,33 +80,48 @@ const Sidebar = () => {
 
         <div className="flex-1 overflow-y-auto">
           <nav className="flex flex-col gap-2 p-2 mt-10">
-            {navItems.map(({ label, icon, href }) => {
-              const isActive = pathname === href;
-              return (
-                <Link
-                  key={label}
-                  href={href}
-                  onClick={() => mobileOpen && toggleMobile()}
-                  className={clsx(
-                    "flex items-center gap-4 p-2 rounded-md transition-colors",
-                    "hover:bg-gray-100",
-                    isActive
-                      ? "bg-indigo-100 text-indigo-600 font-medium"
-                      : "text-gray-700",
-                    collapsed && "justify-center"
-                  )}
-                >
-                  <span className="text-xl">{icon}</span>
-                  {!collapsed && (
-                    <span
-                      className={clsx("text-sm", collapsed && "hidden md:inline")}
-                    >
-                      {label}
-                    </span>
-                  )}
-                </Link>
-              );
-            })}
+            {navItems.map(
+              ({
+                label,
+                icon,
+                href,
+              }: {
+                label: string;
+                icon: React.ReactNode;
+                href: string;
+              }) => {
+                const isActive =
+                  pathname === href ||
+                  (pathname.startsWith(href) && href !== ROUTES.Dashboard);
+                return (
+                  <Link
+                    key={label}
+                    href={href}
+                    onClick={() => mobileOpen && toggleMobile()}
+                    className={clsx(
+                      "flex items-center gap-4 p-2 rounded-md transition-colors",
+                      "hover:bg-gray-100",
+                      isActive
+                        ? "bg-indigo-100 text-indigo-600 font-medium"
+                        : "text-gray-700",
+                      collapsed && "justify-center"
+                    )}
+                  >
+                    <span className="text-xl">{icon}</span>
+                    {!collapsed && (
+                      <span
+                        className={clsx(
+                          "text-sm",
+                          collapsed && "hidden md:inline"
+                        )}
+                      >
+                        {label}
+                      </span>
+                    )}
+                  </Link>
+                );
+              }
+            )}
           </nav>
         </div>
       </aside>

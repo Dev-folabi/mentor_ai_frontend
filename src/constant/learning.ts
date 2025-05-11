@@ -256,7 +256,7 @@ export const careerPath = {
       description: "Module about javascript basics",
       level: "BEGINNER",
       durationWeeks: 3,
-      status: "NOT_STARTED",
+      status: "IN_PROGRESS",
       objective: [
         "Understand JavaScript fundamentals including variables, data types, and operators",
         "Master control structures like loops and conditional statements",
@@ -272,7 +272,7 @@ export const careerPath = {
           id: "content-2-1",
           title: "JavaScript Basics Part 1",
           number: 1,
-          status: "NOT_STARTED",
+          status: "COMPLETED",
           contentType: "video",
           contentLink: "https://example.com/javascript-basics-1",
           contentAssessment: [
@@ -313,7 +313,7 @@ export const careerPath = {
           id: "content-2-2",
           title: "JavaScript Basics Part 2",
           number: 2,
-          status: "NOT_STARTED",
+          status: "COMPLETED",
           contentType: "article",
           contentLink: "https://javascript.info/data-types",
           contentAssessment: [
@@ -411,7 +411,7 @@ export const careerPath = {
       description: "Module about responsive design & flexbox",
       level: "BEGINNER",
       durationWeeks: 3,
-      status: "IN_PROGRESS",
+      status: "LOCKED",
       objective: [
         "Master responsive design principles and techniques",
         "Learn Flexbox layout system for building flexible layouts",
@@ -710,7 +710,7 @@ export const careerPath = {
       description: "Module about react essentials",
       level: "INTERMEDIATE",
       durationWeeks: 3,
-      status: "NOT_STARTED",
+      status: "LOCKED",
       objective: [
         "Understand React fundamentals and component-based architecture",
         "Master JSX syntax and component lifecycle methods",
@@ -867,7 +867,7 @@ export const careerPath = {
       description: "Module about advanced JavaScript concepts",
       level: "INTERMEDIATE",
       durationWeeks: 3,
-      status: "NOT_STARTED",
+      status: "LOCKED",
       objective: [
         "Master closures, prototypes, and inheritance",
         "Understand asynchronous programming with Promises and async/await",
@@ -932,7 +932,7 @@ export const careerPath = {
       description: "Module about Redux state management",
       level: "ADVANCED",
       durationWeeks: 3,
-      status: "NOT_STARTED",
+      status: "LOCKED",
       objective: [
         "Understand Redux architecture and principles",
         "Master actions, reducers, and the store",
@@ -992,7 +992,7 @@ export const careerPath = {
       description: "Module about testing React applications",
       level: "ADVANCED",
       durationWeeks: 3,
-      status: "NOT_STARTED",
+      status: "LOCKED",
       objective: [
         "Learn testing principles and methodologies",
         "Master Jest and React Testing Library",
