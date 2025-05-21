@@ -33,7 +33,12 @@ interface PageProps {
 export default function Module({ params }: PageProps) {
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [selectedAssessment, setSelectedAssessment] = useState<{
-    questions: { question: string; options: string[]; answer: string; mentorComment?: string; }[];
+    questions: {
+      question: string;
+      options: string[];
+      answer: string;
+      mentorComment?: string;
+    }[];
     isCompleted: boolean;
     userAnswers?: string[];
     score?: number;
@@ -60,7 +65,8 @@ export default function Module({ params }: PageProps) {
       moduleResponse.data.content.forEach((content, index) => {
         const refKey = content.id || `content-${index}`;
         if (!refsMapRef.current[refKey]) {
-          refsMapRef.current[refKey] = React.createRef<HTMLDivElement>() as React.RefObject<HTMLDivElement>;
+          refsMapRef.current[refKey] =
+            React.createRef<HTMLDivElement>() as React.RefObject<HTMLDivElement>;
         }
       });
 
@@ -215,8 +221,14 @@ export default function Module({ params }: PageProps) {
                     ref={moduleRefs[content.id || `content-${index}`]}
                   >
                     <div
-                      className={`flex items-center justify-between p-3 ${content.status !== Status.LOCKED  && 'hover:bg-gray-50 cursor-pointer'}`}
-                      onClick={() => content.status !== Status.LOCKED && handleModuleClick(`content-${index}`)}
+                      className={`flex items-center justify-between p-3 ${
+                        content.status !== Status.LOCKED &&
+                        "hover:bg-gray-50 cursor-pointer"
+                      }`}
+                      onClick={() =>
+                        content.status !== Status.LOCKED &&
+                        handleModuleClick(`content-${index}`)
+                      }
                     >
                       <div className="flex items-center">
                         <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
@@ -229,7 +241,9 @@ export default function Module({ params }: PageProps) {
                         <div>
                           <h3 className="font-medium">{content.title}</h3>
                           {/* To be updated */}
-                          <p className="text-sm text-gray-500">{"10 minutes"}</p>
+                          <p className="text-sm text-gray-500">
+                            {"10 minutes"}
+                          </p>
                         </div>
                       </div>
                       <div className="items-center">
@@ -243,41 +257,56 @@ export default function Module({ params }: PageProps) {
                       </div>
                     </div>
 
-                    {selectedModule === `content-${index}` && content.status !== Status.LOCKED && (
-                      <div className="p-4 bg-gray-50 border-t">
-                        {content.contentType === "video" && (
-                          <div className="aspect-video bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                            <Play className="h-12 w-12 text-gray-400" />
+                    {selectedModule === `content-${index}` &&
+                      content.status !== Status.LOCKED && (
+                        <div className="p-4 bg-gray-50 border-t">
+                          {content.contentType === "video" && (
+                            <div className="aspect-video bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
+                              <Play className="h-12 w-12 text-gray-400" />
+                            </div>
+                          )}
+
+                          <div className="prose max-w-none">
+                            <p>
+                              {content.description ||
+                                "This section covers important concepts and practical examples."}
+                            </p>
+
+                            {content.contentAssessment &&
+                              content.contentAssessment.length > 0 && (
+                                <div className="mt-4 flex justify-between items-center">
+                                  {/* To be updated */}
+                                  <h4>
+                                    {content.status === Status.COMPLETED
+                                      ? "View Score"
+                                      : "Assessment Available"}
+                                  </h4>
+                                  <Button
+                                    onClick={() =>
+                                      setSelectedAssessment({
+                                        questions: content.contentAssessment,
+                                        isCompleted:
+                                          content.status === Status.COMPLETED,
+                                        userAnswers:
+                                          content.contentAssessment.userAnswer,
+                                        score: content.contentAssessment.score,
+                                      })
+                                    }
+                                    className={`${
+                                      content.status === Status.COMPLETED
+                                        ? "bg-green-600 hover:bg-green-700"
+                                        : "bg-indigo-600 hover:bg-indigo-700"
+                                    } text-white cursor-pointer`}
+                                  >
+                                    {content.status === Status.COMPLETED
+                                      ? "Completed"
+                                      : "Take Assessment"}
+                                  </Button>
+                                </div>
+                              )}
                           </div>
-                        )}
-
-                        <div className="prose max-w-none">
-                          <p>
-                            {content.description ||
-                              "This section covers important concepts and practical examples."}
-                          </p>
-
-                          {content.contentAssessment &&
-                            content.contentAssessment.length > 0 && (
-                              <div className="mt-4 flex justify-between items-center">
-                                {/* To be updated */}
-<h4>{content.status === Status.COMPLETED ? 'View Score' : 'Assessment Available'}</h4>
-                                <Button
-                                  onClick={() => setSelectedAssessment({
-                                    questions: content.contentAssessment,
-                                    isCompleted: content.status === Status.COMPLETED,
-                                    userAnswers: content.contentAssessment.userAnswer,
-                                    score: content.contentAssessment.score,
-                                  })}
-                                  className={`${content.status === Status.COMPLETED ? 'bg-green-600 hover:bg-green-700' : 'bg-indigo-600 hover:bg-indigo-700'} text-white cursor-pointer`}
-                                >
-                                  {content.status === Status.COMPLETED ? 'Completed' : 'Take Assessment'}
-                                </Button>
-                              </div>
-                            )}
                         </div>
-                      </div>
-                    )}
+                      )}
                   </div>
                 ))
               ) : (
@@ -289,8 +318,8 @@ export default function Module({ params }: PageProps) {
                     No Content Available Yet
                   </h3>
                   <p className="text-gray-600 text-center max-w-md mb-6">
-                    We&apos;re currently developing content for this module. Check
-                    back soon for updates or explore other modules.
+                    We&apos;re currently developing content for this module.
+                    Check back soon for updates or explore other modules.
                   </p>
                   <Button className="bg-indigo-600 hover:bg-indigo-700 text-white">
                     Explore Other Modules
@@ -304,7 +333,9 @@ export default function Module({ params }: PageProps) {
         <div className="md:col-span-1">
           {/* Additional Resources Section */}
           <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-4 mb-6">
-            <h2 className="text-lg font-bold mb-4 text-gray-900">Additional Resources</h2>
+            <h2 className="text-lg font-bold mb-4 text-gray-900">
+              Additional Resources
+            </h2>
 
             <div className="space-y-4">
               <button className="w-full group flex items-center p-2 border border-gray-200 rounded-lg hover:bg-purple-50 transition-colors duration-200">
@@ -312,7 +343,9 @@ export default function Module({ params }: PageProps) {
                   <FileCode className="h-5 w-5 text-purple-600" />
                 </div>
                 <div className="flex-1 text-left">
-                  <span className="text-sm font-medium text-gray-900 block">Documentation</span>
+                  <span className="text-sm font-medium text-gray-900 block">
+                    Documentation
+                  </span>
                 </div>
               </button>
 
@@ -321,7 +354,9 @@ export default function Module({ params }: PageProps) {
                   <Video className="h-5 w-5 text-red-600" />
                 </div>
                 <div className="flex-1 text-left">
-                  <span className="text-sm font-medium text-gray-900 block">Video Tutorials</span>
+                  <span className="text-sm font-medium text-gray-900 block">
+                    Video Tutorials
+                  </span>
                 </div>
               </button>
 
@@ -330,7 +365,9 @@ export default function Module({ params }: PageProps) {
                   <MessageSquare className="h-5 w-5 text-teal-600" />
                 </div>
                 <div className="flex-1 text-left">
-                  <span className="text-sm font-medium text-gray-900 block">Community Forum</span>
+                  <span className="text-sm font-medium text-gray-900 block">
+                    Community Forum
+                  </span>
                 </div>
               </button>
             </div>
@@ -338,7 +375,9 @@ export default function Module({ params }: PageProps) {
 
           {/* Mentor Support Section */}
           <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6">
-            <h2 className="text-lg font-bold mb-4 text-gray-900">Mentor Support</h2>
+            <h2 className="text-lg font-bold mb-4 text-gray-900">
+              Mentor Support
+            </h2>
 
             <div className="flex flex-col items-center text-center">
               <div className="w-20 h-20 rounded-full bg-indigo-100 ring-4 ring-indigo-50 overflow-hidden mb-4 transition-transform hover:scale-105 duration-200">
@@ -351,7 +390,9 @@ export default function Module({ params }: PageProps) {
                 />
               </div>
               {/* To be updated --- Mentor name */}
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">AI Mentor</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                AI Mentor
+              </h3>
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 text-sm font-medium mb-3">
                 {/* To be updated -- Career Name */}
                 {moduleData.level} Expert
