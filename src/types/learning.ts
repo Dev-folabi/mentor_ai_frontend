@@ -27,10 +27,10 @@ export type ContentItem = {
     question: string;
     options: string[];
     answer: string;
-    userAnswer: string;
-    score: number;
-    mentorComment: string;
   }[];
+  isAssessmentCompleted?: boolean;
+  userAssessmentAnswers?: string[];
+  assessmentScore?: number;
 };
 
 export type ChallengeItem = {

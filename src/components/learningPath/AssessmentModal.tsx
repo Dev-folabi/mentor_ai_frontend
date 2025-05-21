@@ -27,7 +27,7 @@ export default function AssessmentModal({ isOpen, onClose, questions, isComplete
   
   const currentQuestion = questions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-  const isCorrect = isCompleted && userAnswers[currentQuestionIndex] === currentQuestion.answer;
+//   const isCorrect = isCompleted && userAnswers[currentQuestionIndex] === currentQuestion.answer;
 
   const handleOptionSelect = (option: string) => {
     const newAnswers = [...selectedAnswers];
@@ -103,7 +103,7 @@ export default function AssessmentModal({ isOpen, onClose, questions, isComplete
             {isCompleted && currentQuestion.mentorComment && (
               <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                 <p className="text-sm text-blue-800">
-                  <span className="font-medium">Mentor's Feedback:</span> {currentQuestion.mentorComment}
+                  <span className="font-medium">Mentor&apos;s Feedback:</span> {currentQuestion.mentorComment}
                 </p>
               </div>
             )}

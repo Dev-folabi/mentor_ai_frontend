@@ -39,7 +39,7 @@ export default function Module({ params }: PageProps) {
       answer: string;
       mentorComment?: string;
     }[];
-    isCompleted: boolean;
+    isCompleted?: boolean;
     userAnswers?: string[];
     score?: number;
   } | null>(null);
@@ -268,7 +268,9 @@ export default function Module({ params }: PageProps) {
 
                           <div className="prose max-w-none">
                             <p>
-                              {content.description ||
+                              {/* To be updated */}
+                              {
+                              // content.description ||
                                 "This section covers important concepts and practical examples."}
                             </p>
 
@@ -288,8 +290,8 @@ export default function Module({ params }: PageProps) {
                                         isCompleted:
                                           content.status === Status.COMPLETED,
                                         userAnswers:
-                                          content.contentAssessment.userAnswer,
-                                        score: content.contentAssessment.score,
+                                          content.userAssessmentAnswers,
+                                        score: content.assessmentScore,
                                       })
                                     }
                                     className={`${
