@@ -9,28 +9,12 @@ import ROUTES from "@/constant/routes";
 import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { HiLockClosed } from "react-icons/hi2";
-
-interface Module {
-  id: string;
-  title: string;
-  number: number;
-  status: string;
-  content: Array<{
-    title: string;
-    status: string;
-  }>;
-  challenges: Array<{
-    id: string;
-    title: string;
-    hasSubmit: boolean;
-  }>;
-  level: string;
-}
+import { Module } from "@/types/learning";
+import { GetModuleProgress } from "@/lib/progress";
 
 interface ModuleCardProps {
   module: Module;
   selectedLevel: string;
-  getModuleProgress: (module: Module) => number;
   status: {
     IN_PROGRESS: string;
     NOT_STARTED: string;
@@ -41,7 +25,7 @@ interface ModuleCardProps {
 const ModuleCard = ({
   module,
   selectedLevel,
-  getModuleProgress,
+  // getModuleProgress,
   status,
 }: ModuleCardProps) => {
   const router = useRouter();
@@ -63,13 +47,12 @@ const ModuleCard = ({
             {`Module ${module.number} - ${selectedLevel} Stage`}
           </p>
         </div>
-        <button
+        <div className={module.status === status.LOCKED ? "cursor-not-allowed" : "cursor-pointer"}
           onClick={() => {
-            if (module.id) {
+            if (module.id && module.status !== status.LOCKED) {
               router.push(ROUTES.paths.MODULE(module.id));
             }
           }}
-          className={"cursor-pointer"}
         >
           <Badge
             className={`px-4 py-2 rounded-full ${
@@ -83,9 +66,9 @@ const ModuleCard = ({
             {module.status === status.NOT_STARTED ? (
               "Start"
             ) : module.status === status.IN_PROGRESS ? (
-              `${getModuleProgress(module)}% Complete`
+              `${GetModuleProgress(module)}% Complete`
             ) : module.status === status.COMPLETED ? (
-              `${getModuleProgress(module)}% Completed`
+              `${GetModuleProgress(module)}% Completed`
             ) : (
               <HiLockClosed className="w-6 h-6" />
             )}

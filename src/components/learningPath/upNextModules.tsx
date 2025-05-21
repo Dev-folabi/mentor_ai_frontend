@@ -2,12 +2,12 @@ import { Badge } from "@/components/ui/badge";
 import { IoIosArrowForward } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import ROUTES from "@/constant/routes";
-import { Module } from "@/types/modules";
+import { Module } from "@/types/learning";
+import { GetModuleProgress } from "@/lib/progress";
 
 interface UpNextModulesProps {
   modules: Module[];
   selectedLevel: string;
-  getModuleProgress: (module: Module) => number;
   status: {
     LOCKED: string;
     COMPLETED: string;
@@ -17,7 +17,6 @@ interface UpNextModulesProps {
 const UpNextModules = ({
   modules,
   selectedLevel,
-  getModuleProgress,
   status,
 }: UpNextModulesProps) => {
   const router = useRouter();
@@ -62,7 +61,7 @@ const UpNextModules = ({
               >
                 {module.status === status.COMPLETED ? (
                   <Badge className="px-4 py-2 rounded-full bg-green-200 text-green-500">
-                    {`${getModuleProgress(module)}% Completed`}
+                    {`${GetModuleProgress(module)}% Completed`}
                   </Badge>
                 ) : (
                   <IoIosArrowForward className="w-6 h-6" />

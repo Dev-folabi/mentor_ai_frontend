@@ -130,6 +130,9 @@ export const careerPath = {
                 "To handle server-side logic",
               ],
               answer: "To structure and organize web content",
+               userAnswer: "",
+              score: 0,
+              mentorComment: "Understanding HTML's core purpose is fundamental to web development."
             },
             {
               question: "What is semantic HTML and why is it important?",
@@ -140,6 +143,9 @@ export const careerPath = {
               ],
               answer:
                 "HTML elements that provide meaning and structure to content",
+              userAnswer: "",
+              score: 0,
+              mentorComment: "Semantic HTML is crucial for accessibility and SEO optimization."
             },
             {
               question:
@@ -150,6 +156,9 @@ export const careerPath = {
                 "To style the image with CSS",
               ],
               answer: "To provide alternative text for accessibility and SEO",
+              userAnswer: "",
+              score: 0,
+              mentorComment: "Alt attributes are essential for making web content accessible to all users."
             },
           ],
         },
@@ -171,6 +180,9 @@ export const careerPath = {
               ],
               answer:
                 "Margin is the space outside an element, padding is the space inside",
+              userAnswer: "",
+              score: 0,
+              mentorComment: "Understanding the box model and spacing is crucial for layout design."
             },
             {
               question: "What is the box model in CSS?",
@@ -181,6 +193,9 @@ export const careerPath = {
               ],
               answer:
                 "A model that describes how elements are structured with content, padding, border, and margin",
+              userAnswer: "",
+              score: 0,
+              mentorComment: "The box model is a fundamental concept that affects all element layouts."
             },
             {
               question: "What is the purpose of CSS specificity?",
@@ -191,6 +206,9 @@ export const careerPath = {
               ],
               answer:
                 "To determine which CSS rules take precedence when multiple rules target the same element",
+              userAnswer: "",
+              score: 0,
+              mentorComment: "CSS specificity is key to writing maintainable and predictable styles."
             },
           ],
         },
@@ -211,6 +229,9 @@ export const careerPath = {
                 "Grid and Flexbox are exactly the same",
               ],
               answer: "Grid is for 2D layouts while Flexbox is for 1D layouts",
+              userAnswer: "",
+              score: 0,
+              mentorComment: "Understanding the differences between Grid and Flexbox is essential for modern layouts."
             },
             {
               question:
@@ -222,6 +243,9 @@ export const careerPath = {
               ],
               answer:
                 "To apply different styles based on device characteristics",
+              userAnswer: "",
+              score: 0,
+              mentorComment: "Media queries are fundamental to creating responsive designs."
             },
             {
               question: "What is the mobile-first design approach?",
@@ -232,6 +256,9 @@ export const careerPath = {
               ],
               answer:
                 "Starting with mobile design and progressively enhancing for larger screens",
+              userAnswer: "",
+              score: 0,
+              mentorComment: "Mobile-first design ensures better user experience across all devices."
             },
           ],
         },
@@ -275,6 +302,8 @@ export const careerPath = {
           status: "COMPLETED",
           contentType: "video",
           contentLink: "https://example.com/javascript-basics-1",
+          userAnswer: "",
+          score: 0,
           contentAssessment: [
             {
               question:
@@ -286,6 +315,9 @@ export const careerPath = {
               ],
               answer:
                 "var is function-scoped, let is block-scoped, const is block-scoped and immutable",
+              userAnswer: "",
+              score: 0,
+              mentorComment: "Understanding variable scope and mutability is crucial in JavaScript.",
             },
             {
               question: "What is hoisting in JavaScript?",
@@ -313,7 +345,7 @@ export const careerPath = {
           id: "content-2-2",
           title: "JavaScript Basics Part 2",
           number: 2,
-          status: "COMPLETED",
+          status: "NOT_STARTED",
           contentType: "article",
           contentLink: "https://javascript.info/data-types",
           contentAssessment: [
@@ -354,7 +386,7 @@ export const careerPath = {
           id: "content-2-3",
           title: "JavaScript Basics Part 3",
           number: 3,
-          status: "NOT_STARTED",
+          status: "LOCKED",
           contentType: "video",
           contentLink: "https://www.youtube.com/watch?v=PkZNo7MFNFg",
           contentAssessment: [
@@ -500,7 +532,7 @@ export const careerPath = {
           id: "content-3-3",
           title: "Responsive Design & Flexbox Part 3",
           number: 3,
-          status: "NOT_STARTED",
+          status: "LOCKED",
           contentType: "video",
           contentLink: "https://www.youtube.com/watch?v=K74l26pE4YA",
           contentAssessment: [
@@ -575,7 +607,7 @@ export const careerPath = {
           id: "content-3-1",
           title: "Responsive Design & Flexbox Part 1",
           number: 1,
-          status: "NOT_STARTED",
+          status: "LOCKED",
           contentType: "video",
           contentLink: "https://www.youtube.com/watch?v=fYq5PXgSsbE",
           contentAssessment: [
@@ -606,7 +638,7 @@ export const careerPath = {
           id: "content-3-2",
           title: "Responsive Design & Flexbox Part 2",
           number: 2,
-          status: "NOT_STARTED",
+          status: "LOCKED",
           contentType: "article",
           contentLink:
             "https://www.freecodecamp.org/news/learn-flexbox-and-responsive-design/",
@@ -648,7 +680,7 @@ export const careerPath = {
           id: "content-3-3",
           title: "Responsive Design & Flexbox Part 3",
           number: 3,
-          status: "NOT_STARTED",
+          status: "LOCKED",
           contentType: "video",
           contentLink: "https://www.youtube.com/watch?v=K74l26pE4YA",
           contentAssessment: [

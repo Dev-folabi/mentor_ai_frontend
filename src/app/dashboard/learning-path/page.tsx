@@ -2,19 +2,11 @@
 
 import DashboardHeader from "@/components/dashboard/dashboardHeader";
 import { careerPath } from "@/constant/learning";
-import { LEVELS } from "@/constant/levels";
+import { LEVELS, Status } from "@/constant/levels";
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import LevelRoadmap from "@/components/learningPath/levelRoadmap";
 import ModuleCard from "@/components/learningPath/moduleCard";
 import UpNextModules from "@/components/learningPath/upNextModules";
-import { Module } from "@/types/modules";
-
-const Status = {
-  LOCKED: "LOCKED",
-  IN_PROGRESS: "IN_PROGRESS",
-  COMPLETED: "COMPLETED",
-  NOT_STARTED: "NOT_STARTED",
-} as const;
 
 type Level = (typeof LEVELS)[keyof typeof LEVELS];
 
@@ -42,13 +34,6 @@ const LearningPath = () => {
     const completed = modules.filter(
       (m) => m.level === level && m.status === Status.COMPLETED
     ).length;
-    return total === 0 ? 0 : Math.round((completed / total) * 100);
-  };
-
-  const getModuleProgress = (module: Module) => {
-    const total = module.content?.length ?? 0;
-    const completed =
-      module.content?.filter((c) => c.status === Status.COMPLETED).length ?? 0;
     return total === 0 ? 0 : Math.round((completed / total) * 100);
   };
 
@@ -108,7 +93,7 @@ const LearningPath = () => {
               key={module.id}
               module={module}
               selectedLevel={selectedLevel}
-              getModuleProgress={getModuleProgress}
+              // getModuleProgress={getModuleProgress}
               status={Status}
             />
           ))}
@@ -118,7 +103,7 @@ const LearningPath = () => {
       <UpNextModules
         modules={modules}
         selectedLevel={selectedLevel}
-        getModuleProgress={getModuleProgress}
+        // getModuleProgress={getModuleProgress}
         status={{ LOCKED: Status.LOCKED, COMPLETED: Status.COMPLETED }}
       />
     </div>
