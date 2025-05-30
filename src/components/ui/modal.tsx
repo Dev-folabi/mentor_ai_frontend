@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
-import React, { useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useEffect, useRef } from "react";
+import { X } from "lucide-react";
+import { createPortal } from "react-dom";
 
 interface ModalProps {
   isOpen: boolean;
@@ -16,7 +17,7 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === "Escape") onClose();
     };
 
     const handleClickOutside = (e: MouseEvent) => {
@@ -24,15 +25,15 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
     };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.addEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'hidden';
+      document.addEventListener("keydown", handleEscape);
+      document.addEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "hidden";
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'unset';
+      document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "unset";
     };
   }, [isOpen, onClose]);
 
@@ -47,12 +48,21 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
         ref={modalRef}
         className="bg-white rounded-lg shadow-xl w-full max-w-lg transform transition-all duration-300 ease-in-out"
         style={{
-          animation: isOpen ? 'modal-in 0.3s ease-out' : 'modal-out 0.2s ease-in',
+          animation: isOpen
+            ? "modal-in 0.3s ease-out"
+            : "modal-out 0.2s ease-in",
         }}
       >
         {title && (
-          <div className="px-6 py-4 border-b">
+          <div className="px-6 py-4 border-b flex justify-between items-center">
             <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
+            <button
+              onClick={onClose}
+              className="text-gray-400 hover:text-gray-600 focus:outline-none"
+              aria-label="Close modal"
+            >
+              <X />
+            </button>
           </div>
         )}
         <div className="p-6">{children}</div>

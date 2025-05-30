@@ -19,6 +19,7 @@ interface ModuleCardProps {
     IN_PROGRESS: string;
     NOT_STARTED: string;
     COMPLETED: string;
+    LOCKED: string;
   };
 }
 
@@ -73,7 +74,7 @@ const ModuleCard = ({
               <HiLockClosed className="w-6 h-6" />
             )}
           </Badge>
-        </button>
+        </div>
       </div>
       <div className="grid grid-rows md:grid-cols-3 p-3 gap-4">
         {/* Learn */}

@@ -54,7 +54,7 @@ export default function AssessmentModal({ isOpen, onClose, questions, isComplete
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Assessment">
-      <div className="space-y-6">
+      <div className="space-y-6 overflow-y-auto max-h-[calc(100vh-200px)]">
         <div>
           <div className="flex justify-between text-sm text-gray-600 mb-2">
             <span>Progress</span>
