@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { FaUserGraduate } from "react-icons/fa";
 import { mentorToastPromise } from "../toast";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface StepSummaryProps {
   career: Career;
@@ -24,6 +25,7 @@ const StepSummary = ({
   onBack,
 }: StepSummaryProps) => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const handleSubmit = async () => {
     const payload = { career, level, goal, duration, mentor };
     setLoading(true);
@@ -44,6 +46,7 @@ const StepSummary = ({
           error: "Something went wrong!",
         }
       );
+      router.push("/dashboard");
     } finally {
       setLoading(false);
     }
