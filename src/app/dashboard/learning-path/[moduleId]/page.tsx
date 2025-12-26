@@ -1,13 +1,12 @@
+"use client"
+
+import { useParams } from 'next/navigation'
 import React from 'react'
 
-interface PageProps{
-  params:{
-    moduleId: string
-  }
-}
-const Module = ({params}: PageProps) => {
+const Module = () => {
+  const { moduleId } = useParams()
   return (
-    <div>{params.moduleId}</div>
+    <div>{moduleId}</div>
   )
 }
 
