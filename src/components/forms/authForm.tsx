@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { LoginSchema, RegisterSchema } from "@/lib/validation";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -22,6 +23,7 @@ interface AuthFormProps {
 }
 
 const AuthForm = ({ mode }: AuthFormProps) => {
+  const router = useRouter();
   const schema = mode === "login" ? LoginSchema : RegisterSchema;
 
   const form = useForm({
@@ -49,6 +51,9 @@ const AuthForm = ({ mode }: AuthFormProps) => {
       );
 
       // Handle successful authentication
+      if (mode === "register") {
+        router.push("/onboarding");
+      }
       // For now just logging the data
       console.log(data);
     } catch (error) {
