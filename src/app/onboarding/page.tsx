@@ -34,7 +34,7 @@ const Onboarding = () => {
           (step) => step.charAt(0).toUpperCase() + step.slice(1)
         )}
       />
-      <div className="bg-indigo-50 min-h-screen py-10 px-6">
+      <div className="bg-indigo-50 min-h-screen p-2 md:p-6">
         {steps[currentStep] === "step1" && (
           <StepOne
             selectedCareer={selectedCareer}

@@ -14,9 +14,9 @@ const Auth = async ({ params }: Props) => {
   const { id } = await params;
 
   return (
-    <div className="flex h-screen w-full overflow-hidden">
+    <div className="flex flex-col md:flex-row min-h-screen w-full overflow-auto">
       {/* Auth Section */}
-      <div className="w-full md:w-1/2 flex bg">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8 bg">
         <div className="card">
           <h2 className="text-3xl font-extrabold mb-6 text-indigo-700 text-center">
             {id === "login" ? "Welcome Back" : "Create Your Account"}
@@ -62,14 +62,14 @@ const Auth = async ({ params }: Props) => {
       </div>
 
       {/* Banner Section */}
-      <div className="hidden md:flex w-1/2 items-center justify-center relative bg-gradient-to-br from-indigo-700 via-blue-600 to-indigo-500 text-white">
+      <div className="hidden lg:flex w-1/2 min-h-screen items-center justify-center relative bg-gradient-to-br from-indigo-700 via-blue-600 to-indigo-500 text-white">
         <div className="absolute inset-0 bg-opacity-20 backdrop-blur-sm"></div>
 
-        <div className="z-10 p-10 text-center max-w-lg">
-          <h2 className="text-4xl font-bold mb-4 leading-snug">
+        <div className="z-10 p-8 text-center max-w-lg">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-snug">
             Unlock Your Career Potential
           </h2>
-          <p className="text-lg text-indigo-100 mb-12">
+          <p className="text-base md:text-lg text-indigo-100 mb-12">
             Personalized AI mentorship to help you grow, learn, and land your
             dream job.
           </p>
