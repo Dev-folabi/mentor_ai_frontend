@@ -11,7 +11,10 @@ function Progress({
   progressColour,
   value,
   ...props
-}: React.ComponentProps<typeof ProgressPrimitive.Root>) {
+}: React.ComponentProps<typeof ProgressPrimitive.Root> & {
+  bg: string;
+  progressColour: string;
+}) {
   return (
     <ProgressPrimitive.Root
       data-slot="progress"

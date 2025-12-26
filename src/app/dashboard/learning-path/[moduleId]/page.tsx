@@ -12,14 +12,10 @@ import ModuleContentList from "@/components/learningPath/ModuleContentList";
 import AdditionalResources from "@/components/learningPath/AdditionalResources";
 import MentorSupport from "@/components/learningPath/MentorSupport";
 import LoadingSpinner from "@/components/loading-spinner";
+import { useParams } from "next/navigation";
 
-interface PageProps {
-  params: {
-    moduleId: string;
-  };
-}
-
-export default function Module({ params }: PageProps) {
+export default function Module() {
+  const params = useParams();
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [selectedAssessment, setSelectedAssessment] = useState<{
     questions: {
@@ -37,11 +33,12 @@ export default function Module({ params }: PageProps) {
   const [moduleRefs, setModuleRefs] = useState<
     Record<string, React.RefObject<HTMLDivElement>>
   >({});
+  const moduleId = params.moduleId as string;
   const {
     data: moduleResponse,
     loading,
     error,
-  } = useApi(() => getModuleContent(params.moduleId), { immediate: true });
+  } = useApi(() => getModuleContent(moduleId), { immediate: true });
   // Store refs in a ref object
   const refsMapRef = useRef<Record<string, React.RefObject<HTMLDivElement>>>(
     {}
@@ -75,7 +72,7 @@ export default function Module({ params }: PageProps) {
         });
       }, 100);
     }
-  }, [selectedModule]);
+  }, [selectedModule, moduleRefs]);
 
   if (loading) {
     return (

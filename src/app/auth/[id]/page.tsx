@@ -1,17 +1,14 @@
+"use client";
 import CareerIcons from "@/components/forms/careersIcons";
 import React from "react";
 import Link from "next/link";
 import AuthForm from "@/components/forms/authForm";
 import GoogleAuth from "@/components/forms/googleAuth";
+import { useParams } from "next/navigation";
 
-interface Props {
-  params: {
-    id: string;
-  };
-}
-
-const Auth = async ({ params }: Props) => {
-  const { id } = await params;
+const Auth = () => {
+  const params = useParams();
+  const id = params.id;
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen w-full overflow-auto">
