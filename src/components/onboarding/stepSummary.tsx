@@ -4,6 +4,7 @@ import { Sparkles } from "lucide-react";
 import React, { useState } from "react";
 import { FaUserGraduate } from "react-icons/fa";
 import { mentorToastPromise } from "../toast";
+import Image from "next/image";
 
 interface StepSummaryProps {
   career: Career;
@@ -106,10 +107,12 @@ const StepSummary = ({
             <div>
               <p>Your Mentor</p>
               <div className="flex  items-center gap-3 text-gray-600 mt-3">
-                <img
+                <Image
                   src={mentor?.imageUrl}
                   alt="mentor"
                   className="w-10 h-10 rounded-full"
+                  width={40}
+                  height={40}
                 />
                 <p>
                   <strong>{mentor?.name}</strong>
